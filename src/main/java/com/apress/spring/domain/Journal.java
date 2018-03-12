@@ -65,16 +65,24 @@ public class Journal {
     public void setFormat(SimpleDateFormat format) {
         this.format = format;
     }
+    public String getCreatedAsShort(){
+        return this.format.format(created);
+    }
 
     @Override
     public String toString() {
-        return "Journal{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", created=" + created +
-                ", summary='" + summary + '\'' +
-                ", format=" + format +
-                '}';
+        StringBuilder value = new StringBuilder("JournalEntry(");
+        value.append("ID:  ");
+        value.append(id);
+        value.append(", 제목'  ");
+        value.append(title);
+        value.append(", 요약: ");
+        value.append(summary);
+        value.append(", 일자:");
+        value.append(getCreatedAsShort());
+        value.append(")");
+
+        return value.toString();
     }
 }
 
